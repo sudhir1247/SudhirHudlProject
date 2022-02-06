@@ -1,7 +1,7 @@
 
-================================
+======================================
 Sudhir Hudl Test Automation Framework
-================================
+======================================
 This project is a template for sudhir's test automation framework, which provides structured and standard way of
 creating automated test scripts for GUI.
 
@@ -27,12 +27,19 @@ The test automation framework is comprised of following tools and libraries
 
 Machine Configuration
 ====================
-Configure below softwares on Windows and setup: -
+Configure below software's and setup: -
 *Java 8
 *Apache Maven 3.8.4
 
-Get the latest Source Code from my public Github repo
+Set environment variables
+--------------------------
+In User variables
+    Variable name = MAVEN_HOME
+    Variable_value = location of the Maven (in my case C:\apache-maven-3.8.4 )
 
+In System variables select Path and click Edit
+    Ensure JDK bin location is added here (in my case C:\Program Files\Java\jdk1.8.0_202\bin)
+    Ensure Maven location is added here (C:\apache-maven-3.8.4\bin)
 
 IDE Configuration
 ==================
@@ -47,42 +54,14 @@ File >> Setting >> Plugins >> Browser Repositories>
 *TestNg
 *ChromeDriver - 98.0.4758.80
 
-Feature files can be located at src/sudhirAutomationFramework/src/test/resources/features
-Step definitions files -
-Java class file
-
 Import Project into Intellij
 ----------------------------
 File>Import Project>
-Browse to sudhirAutomationFramework
 
-run "mvn validate" (To Resolve DB2 dependencies)
-
-open terminal
-
-Compile Build or Run Tests
-==========================
-Multiple ways to run the tests
-
-1. In the terminal cd to root to SudhirHudlProject directory and enter the the command "mvn test" (without quotes) and all the tests will run one after another OR
-2. Navigate to Feature file > right click > Run Scenario OR
-3. From the toolbar menu > Run > Run Scenario
-
-Report
-======
-
-Local reports
--------------
-Standard HTML Report
-A report will be generated at /target/cucumber-report/index.html
-
-Pretty Cucumber-Html Report
-A report will be generated at /target/cucumber-report/cucumber-html-reports/overview-features.html (Right click on this html file and Open In > Browser > Select Chrome (or your desired browser)
-
+Browse to SudhirHudlProject and open pom.xml
 
 Getting Started
 ===========================
-
 
 Feature Files
 -------------------------------------------------------------------
@@ -90,41 +69,32 @@ These files contains the acceptance criteria which are written in Gherkin Langua
 The feature files are tagged with "@tagname" to group common feature files
 
 File Extension:  *.feature
-Location: "/home/dev/src/sudhirAutomationFramework/src/test/resources/features"  /SudhirHudlProject/src/test/resources/login.feature
+Location: "/SudhirHudlProject/src/test/resources/login.feature"
 
 Page Objects
 -------------------------------------------------------------------
 PageObjects are used to store the WebElements for a Web Page.
 
-Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPage.java
+Location: "/SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPage.java"
 
 Step Definitions
 --------------------------------------------------------------------
 Every steps defined in Feature file needs to be implemented in Step Definitions Class
 
-Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPageSteps.java
-
+Location: "/SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPageSteps.java"
 
 Run Test Suite
 --------------------------------------------------------------------
 Test Suites are used to run a group of Tests which are tagged and represented in form of Feature files & Scenarios
 
-Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/Runner.java
-
-
-    @CucumberOptions(features = "target/test-classes", tags = {"@mytest"}, monochrome = true, plugin = {
-            "pretty", "html:target/cucumber-report/runwebat",
-            "json:target/cucumber-report/runwebat/cucumber.json",
-            "rerun:target/cucumber-report/runwebat/rerun.txt"},
-            glue = "com.sudhir.test")
-    public class RunWebATSuite extends AbstractTestNGCucumberTests {
-    }
-
+Location: "/SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/Runner.java"
 
 Other ways to run the tests or Test Suite
 ---------------------------------------------
-*command line using Maven:-  mvn clean test -P dev
-*IDE Plugins: - Eclipse or Intellij or Maven plugin or Cucumber-Java plugin
+*command line using Maven:-  mvn clean test
 
+Report
+======
 
-
+Pretty Cucumber-Html Report
+A report will be generated at /target/cucumber-report/cucumber-html-reports/overview-features.html (Right click on this html file and Open In > Browser > Select Chrome (or your desired browser)
