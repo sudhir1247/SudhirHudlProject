@@ -1,0 +1,130 @@
+
+================================
+Sudhir Hudl Test Automation Framework
+================================
+This project is a template for sudhir's test automation framework, which provides structured and standard way of
+creating automated test scripts for GUI.
+
+This is a reusable automation framework that blends together Selenium WebDriver, Cucumber JVM (incorporating Gherkin and the BDD 'Given, When Then' testing construct)
+
+This framework supports automation on Chrome Web browser.
+
+The framework incorporates design principle of BDD (Behaviour driven development) which promotes
+ writing acceptance tests by describing behaviour of application under test in simple english language from the perspective of its stakeholders.
+ Having test written in Natural language helps the Project Team (Product Owners, Business Analysts, Development and QA team) to understand and track the requirements
+
+Tools & libraries
+=================
+The test automation framework is comprised of following tools and libraries
+
+*Cucumber-JVM:- BDD Framework
+*Custom Page Object Pattern and utility functions
+*Selenium WebDriver: - Browser automation framework
+*JAVA: - Programming language
+*TestNg: - TestNg Java testing framework
+*Maven: - Build tool
+*Intellij: - Integrated Development Environment
+
+Machine Configuration
+====================
+Configure below softwares on Windows and setup: -
+*Java 8
+*Apache Maven 3.8.4
+
+Get the latest Source Code from my public Github repo
+
+
+IDE Configuration
+==================
+Intellij plugins
+----------------
+Configure and Install Following Plugins
+File >> Setting >> Plugins >> Browser Repositories>
+
+*Cucumber for Java
+*Gherkin
+*Maven Integration
+*TestNg
+*ChromeDriver - 98.0.4758.80
+
+Feature files can be located at src/sudhirAutomationFramework/src/test/resources/features
+Step definitions files -
+Java class file
+
+Import Project into Intellij
+----------------------------
+File>Import Project>
+Browse to sudhirAutomationFramework
+
+run "mvn validate" (To Resolve DB2 dependencies)
+
+open terminal
+
+Compile Build or Run Tests
+==========================
+Multiple ways to run the tests
+
+1. In the terminal cd to root to SudhirHudlProject directory and enter the the command "mvn test" (without quotes) and all the tests will run one after another OR
+2. Navigate to Feature file > right click > Run Scenario OR
+3. From the toolbar menu > Run > Run Scenario
+
+Report
+======
+
+Local reports
+-------------
+Standard HTML Report
+A report will be generated at /target/cucumber-report/index.html
+
+Pretty Cucumber-Html Report
+A report will be generated at /target/cucumber-report/cucumber-html-reports/overview-features.html (Right click on this html file and Open In > Browser > Select Chrome (or your desired browser)
+
+
+Getting Started
+===========================
+
+
+Feature Files
+-------------------------------------------------------------------
+These files contains the acceptance criteria which are written in Gherkin Language and contains various scenarios.
+The feature files are tagged with "@tagname" to group common feature files
+
+File Extension:  *.feature
+Location: "/home/dev/src/sudhirAutomationFramework/src/test/resources/features"  /SudhirHudlProject/src/test/resources/login.feature
+
+Page Objects
+-------------------------------------------------------------------
+PageObjects are used to store the WebElements for a Web Page.
+
+Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPage.java
+
+Step Definitions
+--------------------------------------------------------------------
+Every steps defined in Feature file needs to be implemented in Step Definitions Class
+
+Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/LoginPageSteps.java
+
+
+Run Test Suite
+--------------------------------------------------------------------
+Test Suites are used to run a group of Tests which are tagged and represented in form of Feature files & Scenarios
+
+Location: /SudhirHudlProject/src/test/java/com.hudl.test.stepsFiles/Runner.java
+
+
+    @CucumberOptions(features = "target/test-classes", tags = {"@mytest"}, monochrome = true, plugin = {
+            "pretty", "html:target/cucumber-report/runwebat",
+            "json:target/cucumber-report/runwebat/cucumber.json",
+            "rerun:target/cucumber-report/runwebat/rerun.txt"},
+            glue = "com.sudhir.test")
+    public class RunWebATSuite extends AbstractTestNGCucumberTests {
+    }
+
+
+Other ways to run the tests or Test Suite
+---------------------------------------------
+*command line using Maven:-  mvn clean test -P dev
+*IDE Plugins: - Eclipse or Intellij or Maven plugin or Cucumber-Java plugin
+
+
+

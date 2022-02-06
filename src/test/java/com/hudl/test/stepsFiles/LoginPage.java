@@ -1,40 +1,48 @@
 package com.hudl.test.stepsFiles;
 
 import cucumber.api.java.After;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
     WebDriver driver;
-    private final By emailID = By.id("email");
-    private final By password = By.id("password");
-    private final By loginButton = By.id("logIn");
-    private final By loginErrorMessage = By.cssSelector("form.login-container div.login-error div.login-error-container p");
+    @FindBy(id="email")
+    private WebElement emailID;
+    @FindBy(id="password")
+    private WebElement password;
+    @FindBy(id="logIn")
+    private WebElement loginButton;
+    @FindBy(css="form.login-container div.login-error div.login-error-container p")
+    private WebElement loginErrorMessage;
+
+
 
     public void startDriver() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.get("https://www.hudl.com/login");
-
+        PageFactory.initElements(driver, this);
     }
 public String getLoginErrorMessage() throws Exception
 {
     waitTime(3);
-    return driver.findElement(loginErrorMessage).getText();
+    return loginErrorMessage.getText();
 }
     public void enterEmailId(String emailValue) {
-        driver.findElement(emailID).sendKeys(emailValue);
+        emailID.sendKeys(emailValue);
     }
 
     public void enterPassword(String pwd) {
-        driver.findElement(password).sendKeys(pwd);
+        password.sendKeys(pwd);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        loginButton.click();
     }
 
     public String getPageTitle() throws Exception {

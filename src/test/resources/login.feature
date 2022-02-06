@@ -1,7 +1,7 @@
 @mytest
 Feature: Login functionality
 
-  @validLogin
+  @InvalidLogin
   Scenario: Invalid login scenario
     Given i navigate to the "Home" page
     When I enter email id "msudhirvarma@gmail.com" and password "incorrectPassword"
